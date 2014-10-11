@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Cake Yaml by chobo1210</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Cake Yaml</h1>
+        <h2>Yaml config files support for CakePHP 3</h2>
+        <a href="https://github.com/chobo1210/Yaml" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="yaml-for-cakephp-3" class="anchor" href="#yaml-for-cakephp-3"><span class="octicon octicon-link"></span></a>Yaml for <strong>CakePHP 3</strong>
+</h1>
+
+<p>implements most of the YAML 1.2 specification using <a href="https://github.com/symfony/Yaml">Symfony Yaml Component</a> to CakePHP 3 for parsing config files</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>The 3.0 branch has the following requirements:</p>
+
+<ul>
+<li>CakePHP 3.0.0 or greater.</li>
+</ul>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<ul>
+<li>Install the plugin with composer from your CakePHP Project's ROOT directory (where composer.json file is located)</li>
+</ul>
+
+<div class="highlight highlight-sh"><pre>php composer.phar require chobo1210/yaml <span class="s2">"dev-master"</span>
+</pre></div>
+
+<p>OR
+add this lines to your <code>composer.json</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="s2">"require"</span><span class="o">:</span> <span class="p">{</span>
+  <span class="s2">"cakephp/migrations"</span><span class="o">:</span> <span class="s2">"dev-master"</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>And run <code>php composer.phar update</code></p>
+
+<p>then add this lines to your <code>config/bootstrap.php</code></p>
+
+<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">Yaml\Configure\Engine\YamlConfig</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nx">Configure</span><span class="o">::</span><span class="na">config</span><span class="p">(</span><span class="s1">'yaml'</span><span class="p">,</span> <span class="k">new</span> <span class="nx">YamlConfig</span><span class="p">());</span>
+  <span class="nx">Configure</span><span class="o">::</span><span class="na">load</span><span class="p">(</span><span class="s1">'your_file'</span><span class="p">,</span> <span class="s1">'yaml'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">die</span><span class="p">(</span><span class="s1">'Unable to load config/your_file.yml.'</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>your file must be in the <code>config/</code> directory <strong>replace</strong> <code>your_file</code> with the name of your <em>YAML</em> file <strong>without the extension</strong></p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>if you want to use the plugin Shell to convert your current config add the lines to <code>config/bootstrap.php</code></p>
+
+<div class="highlight highlight-php"><pre><span class="nx">Plugin</span><span class="o">::</span><span class="na">load</span><span class="p">(</span><span class="s1">'Yaml'</span><span class="p">);</span>
+</pre></div>
+
+<p>then in your Console or Terminal type :</p>
+
+<div class="highlight highlight-sh"><pre>bin/cake convert
+</pre></div>
+
+<p>Optionally you can set the name of your <strong>YAML</strong> file ( without the extension )  default is : <code>app.yml</code></p>
+
+<div class="highlight highlight-sh"><pre>bin/cake convert your_file_name
+</pre></div>
+
+<p>the file will be create in your <code>config/</code> directory.</p>
+
+<h2>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<div class="highlight highlight-yml"><pre><span class="l-Scalar-Plain">debug</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+
+<span class="l-Scalar-Plain">Asset</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">timestamp</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+
+<span class="c1"># Default Database Connection informations</span>
+<span class="l-Scalar-Plain">default_configuration</span><span class="p-Indicator">:</span> <span class="nl">&amp;default_configuration</span>
+  <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Cake\Database\Connection</span>
+  <span class="l-Scalar-Plain">driver</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Cake\Database\Driver\Mysql</span>
+  <span class="l-Scalar-Plain">persistent</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+  <span class="l-Scalar-Plain">host</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">localhost</span>
+  <span class="l-Scalar-Plain">login</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">root</span>
+  <span class="l-Scalar-Plain">password</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">secret</span>
+  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+  <span class="l-Scalar-Plain">encoding</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">utf8</span>
+  <span class="l-Scalar-Plain">timezone</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">+01:00</span>
+  <span class="l-Scalar-Plain">cacheMetadata</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+  <span class="l-Scalar-Plain">quoteIdentifiers</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>  
+
+
+
+<span class="c1"># Datasources</span>
+<span class="l-Scalar-Plain">Datasources</span><span class="p-Indicator">:</span>
+  <span class="c1"># Default datasource</span>
+  <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> 
+    <span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*default_configuration</span>
+    <span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">my_database</span>
+  <span class="c1"># PHPUnit tests datasource</span>
+  <span class="l-Scalar-Plain">test</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">&lt;&lt;</span><span class="p-Indicator">:</span> <span class="nv">*default_configuration</span>
+    <span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">my_database_test</span>
+
+
+
+<span class="c1"># Email Configuration</span>
+<span class="l-Scalar-Plain">EmailTransport</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">className</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Mail</span>
+      <span class="l-Scalar-Plain">host</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">localhost</span>
+      <span class="l-Scalar-Plain">port</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">1025</span>
+      <span class="l-Scalar-Plain">timeout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">30</span>
+      <span class="c1"># username: user</span>
+      <span class="c1"># password: secret</span>
+      <span class="l-Scalar-Plain">client</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+      <span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+<span class="l-Scalar-Plain">Email</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">transport</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">default</span>
+      <span class="l-Scalar-Plain">from</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">contact@localhost.dz</span>
+      <span class="l-Scalar-Plain">cherset</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">utf-8</span>
+      <span class="l-Scalar-Plain">headerCharset</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">utf-8</span>   
+</pre></div>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/chobo1210/Yaml/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/chobo1210/Yaml/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/chobo1210/Yaml"></a> is maintained by <a href="https://github.com/chobo1210">chobo1210</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
