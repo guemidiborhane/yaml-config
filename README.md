@@ -15,6 +15,19 @@ The 3.0 branch has the following requirements:
 php composer.phar require chobo1210/yaml "dev-master"
 ```
 
+OR
+add this lines to your `composer.json`
+
+```javascript
+"require": {
+  "cakephp/migrations": "dev-master"
+}
+```
+
+And run `php composer.phar update`
+
+
+
 then add this lines to your `config/bootstrap.php`
 
 ```php
