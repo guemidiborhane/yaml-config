@@ -54,9 +54,9 @@ Optionally you can set the name of your __YAML__ file ( without the extension ) 
 
 ```sh 
 bin/cake convert your_file_name
-``
+```
 
-the file will be create in your `config/` directory
+the file will be create in your `config/` directory.
 
 
 
