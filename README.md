@@ -33,8 +33,12 @@ then add this lines to your `config/bootstrap.php`
 ```php
 use Yaml\Configure\Engine\YamlConfig;
 
-Configure::config('yaml', new YamlConfig());
-Configure::load('your_file', 'yaml');
+try {
+  Configure::config('yaml', new YamlConfig());
+  Configure::load('your_file', 'yaml');
+} catch (\Exception $e) {
+  die('Unable to load config/your_file.yml.');
+}
 ```
 your file must be in the `config/` directory __replace__ `your_file` with the name of your _YAML_ file __without the extension__
 
