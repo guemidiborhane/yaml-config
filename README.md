@@ -36,10 +36,30 @@ use Yaml\Configure\Engine\YamlConfig;
 Configure::config('yaml', new YamlConfig());
 Configure::load('your_file', 'yaml');
 ```
-
 your file must be in the `config/` directory __replace__ `your_file` with the name of your _YAML_ file __without the extension__
 
+## Usage
+
+if you want to use the plugin Shell to convert your current config add the lines to `config/bootstrap.php`
+
+```php
+Plugin::load('Yaml');
+```
+then in your Console or Terminal type :
+```sh
+bin/cake convert
+```
+
+Optionally you can set the name of your __YAML__ file ( without the extension )  default is : `app.yml`
+
+```sh 
+bin/cake convert your_file_name
+``
+
+the file will be create in your `config/` directory
+
 ## Example
+
 ```yml
 debug: true
 
