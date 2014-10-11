@@ -1,0 +1,20 @@
+{
+	"name": "chobo1210/yaml",
+	"description": "Yaml Configuration support for CakePHP 3",
+	"type": "cakephp-plugin",
+	"keywords": ["cakephp", "yaml", "config"],
+	"require": {
+		"symfony/yaml": "2.6.*@dev"
+		},
+		"authors": [
+		{
+			"name": "Chobo Islah",
+			"email": "guemidiborhane@gmail.com"
+		}
+		],
+	"autoload": {
+		"psr-4": {
+			"Yaml\\": "src"
+		}
+	}
+	}
