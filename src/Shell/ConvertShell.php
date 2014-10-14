@@ -11,7 +11,7 @@ class ConvertShell extends Shell {
 		include CONFIG.'app.php';
 
 		$dumper = new Dumper();
-		$yaml = $dumper->dump($config, 2);
+		$yaml = $dumper->dump($config, 5);
 		file_put_contents(CONFIG . $output . '.yml', $yaml);
 	}
 
