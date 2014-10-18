@@ -20,7 +20,7 @@ add this lines to your `composer.json`
 
 ```javascript
 "require": {
-  "cakephp/migrations": "dev-master"
+  "chobo1210/Yaml": "dev-master"
 }
 ```
 
