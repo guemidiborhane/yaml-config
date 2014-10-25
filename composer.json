@@ -4,6 +4,8 @@
 	"type": "cakephp-plugin",
 	"keywords": ["cakephp", "yaml", "config"],
 	"require": {
+		"cakephp/cakephp": "3.0.*-dev",
+		"cakephp/plugin-installer": "*",
 		"symfony/yaml": "2.6.*@dev"
 		},
 		"authors": [
