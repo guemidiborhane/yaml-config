@@ -18,7 +18,7 @@ class YamlConfig implements ConfigEngineInterface {
         return $r;
     }
 
-    public function dump($key, $data) {
+    public function dump($key, array $data) {
         // Code to dump data to file
     }
 }
