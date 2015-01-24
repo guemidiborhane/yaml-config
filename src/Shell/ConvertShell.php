@@ -8,6 +8,7 @@ use Symfony\Component\Yaml\Dumper;
 class ConvertShell extends Shell {
 
 	public function main($output = 'app') {
+		$config = [];
 		include CONFIG.'app.php';
 
 		$dumper = new Dumper();
