@@ -6,6 +6,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class YamlConfig implements ConfigEngineInterface {
 
+    private $_path;
+
     public function __construct($path = null) {
         if (!$path) {
             $path = CONFIG;
