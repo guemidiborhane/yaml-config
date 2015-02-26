@@ -1,26 +1,45 @@
-<?php 
+<?php
 namespace Yaml\Configure\Engine;
 
 use Cake\Core\Configure\ConfigEngineInterface;
+use Cake\Core\Configure\FileConfigTrait;
+use Cake\Core\Exception\Exception;
 use Symfony\Component\Yaml\Yaml;
 
-class YamlConfig implements ConfigEngineInterface {
+class YamlConfig implements ConfigEngineInterface
+{
 
-    private $_path;
+    use FileConfigTrait;
 
-    public function __construct($path = null) {
-        if (!$path) {
+    protected $_path = null;
+
+    protected $_extension = '.yml';
+
+    public function __construct($path = null)
+    {
+        if ($path === null) {
             $path = CONFIG;
         }
         $this->_path = $path;
     }
 
-    public function read($key) {
-        $r = Yaml::parse($this->_path . $key . '.yml');
-        return $r;
+    /**
+     * @param string $key
+     * @return array
+     */
+    public function read($key)
+    {
+        $file = $this->_getFilePath($key, true);
+        $config = Yaml::parse($file);
+        if (is_array($config)) {
+            return $config;
+        } else {
+            throw new Exception(sprintf('Config file "%s" did not return an array', $key . '.php'));
+        }
     }
 
-    public function dump($key, array $data) {
+    public function dump($key, array $data)
+    {
         // Code to dump data to file
     }
 }
