@@ -11,8 +11,6 @@ class YamlConfig implements ConfigEngineInterface
 
     use FileConfigTrait;
 
-    protected $_path = null;
-
     protected $_extension = '.yml';
 
     public function __construct($path = null)
