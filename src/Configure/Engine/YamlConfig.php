@@ -13,6 +13,12 @@ class YamlConfig implements ConfigEngineInterface
 
     protected $_extension = '.yml';
 
+    /**
+     * Method: __construct
+     *
+     * @param mixed $path Path
+     * @return void
+     */
     public function __construct($path = null)
     {
         if ($path === null) {
@@ -22,13 +28,14 @@ class YamlConfig implements ConfigEngineInterface
     }
 
     /**
-     * @param string $key
+     * @param string $key Key
      * @return array
      */
     public function read($key)
     {
         $file = $this->_getFilePath($key, true);
-        $config = Yaml::parse($file);
+        $input = file_get_contents($file);
+        $config = Yaml::parse($input);
         if (is_array($config)) {
             return $config;
         } else {
@@ -36,6 +43,13 @@ class YamlConfig implements ConfigEngineInterface
         }
     }
 
+    /**
+     * Method: dump
+     *
+     * @param mixed $key Key
+     * @param array $data Data
+     * @return void
+     */
     public function dump($key, array $data)
     {
         // Code to dump data to file
