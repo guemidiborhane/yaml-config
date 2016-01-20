@@ -6,7 +6,7 @@
 	"require": {
 		"cakephp/cakephp": "~3.0",
 		"cakephp/plugin-installer": "*",
-		"symfony/yaml": "2.6.*@dev"
+        "symfony/yaml": "~2.8|~3.0"
 		},
 		"authors": [
 		{
