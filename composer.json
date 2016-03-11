@@ -1,5 +1,5 @@
 {
-	"name": "guemidiborhane/yaml",
+	"name": "guemidiborhane/yaml-config",
 	"description": "Yaml Configuration support for CakePHP 3",
 	"type": "cakephp-plugin",
 	"keywords": ["cakephp", "yaml", "config"],
@@ -10,7 +10,7 @@
 		},
 		"authors": [
 		{
-			"name": "Chobo Islah",
+			"name": "Borhane Eddine Guemidi",
 			"email": "guemidiborhane@gmail.com"
 		}
 		],
