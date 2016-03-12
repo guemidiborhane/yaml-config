@@ -1,22 +1,22 @@
 {
-	"name": "guemidiborhane/yaml-config",
-	"description": "Yaml Configuration support for CakePHP 3",
-	"type": "cakephp-plugin",
-	"keywords": ["cakephp", "yaml", "config"],
-	"require": {
-		"cakephp/cakephp": "~3.0",
-		"cakephp/plugin-installer": "*",
-        "symfony/yaml": "~2.8|~3.0"
-		},
-		"authors": [
-		{
-			"name": "Borhane Eddine Guemidi",
-			"email": "guemidiborhane@gmail.com"
-		}
-		],
-	"autoload": {
-		"psr-4": {
-			"Yaml\\": "src"
-		}
-	}
-	}
+  "name": "guemidiborhane/yaml-config",
+  "description": "Yaml Configuration support for CakePHP 3",
+  "type": "cakephp-plugin",
+  "keywords": ["cakephp", "yaml", "config"],
+  "require": {
+    "cakephp/cakephp": "^3.0",
+    "cakephp/plugin-installer": "*",
+    "symfony/yaml": "~2.8|~3.0"
+  },
+  "authors": [
+    {
+      "name": "Borhane Eddine Guemidi",
+      "email": "guemidiborhane@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Yaml\\": "src"
+    }
+  }
+}
