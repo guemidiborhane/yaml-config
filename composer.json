@@ -1,11 +1,10 @@
 {
   "name": "guemidiborhane/yaml-config",
-  "description": "Yaml Configuration support for CakePHP 3",
+  "description": "Yaml Configuration support for CakePHP 4",
   "type": "cakephp-plugin",
   "keywords": ["cakephp", "yaml", "config"],
   "require": {
-    "cakephp/cakephp": "^3.0",
-    "cakephp/plugin-installer": "*",
+    "cakephp/cakephp": "^4.0",
     "symfony/yaml": "~2.8|~3.0"
   },
   "authors": [
