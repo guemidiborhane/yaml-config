@@ -31,7 +31,7 @@ class YamlConfig implements ConfigEngineInterface
      * @param string $key Key
      * @return array
      */
-    public function read($key)
+    public function read(string $key): array
     {
         $file = $this->_getFilePath($key, true);
         $input = file_get_contents($file);
@@ -48,9 +48,9 @@ class YamlConfig implements ConfigEngineInterface
      *
      * @param mixed $key Key
      * @param array $data Data
-     * @return void
+     * @return bool
      */
-    public function dump($key, array $data)
+    public function dump(string $key, array $data): bool
     {
         // Code to dump data to file
     }
